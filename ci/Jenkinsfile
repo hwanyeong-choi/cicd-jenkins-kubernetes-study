@@ -10,9 +10,11 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'chmod +x ./gradlew'
                 sh './gradlew clean build'
             }
         }
+
     }
 
     post {
@@ -25,5 +27,12 @@ pipeline {
         failure {
             echo 'Build or compilation failed.'
         }
+    }
+}
+
+stage('Build') {
+    steps {
+        sh 'chmod +x ./gradlew'
+        sh './gradlew clean build'
     }
 }
